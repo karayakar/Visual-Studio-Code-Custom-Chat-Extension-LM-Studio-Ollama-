@@ -2,6 +2,12 @@
 
 Yapzek Local Agent is a VS Code chat extension that lets you talk to local LLMs (Ollama or LM Studio) through a dedicated Yapzek chat surface. It also ships a control-panel sidebar, helper commands, and a light abstraction layer for adding more “agent tools” later on.
 
+<p align="center">
+  <img src="./assets/vscode-ext.png">
+</p>
+
+
+
 ## Highlights
 
 - **Yapzek Chat sidebar & window** – open the custom Yapzek Chat view from *View → Yapzek Chat* or launch the detachable panel via *Yapzek Agent: Open Chat Window* whenever you prefer a standalone surface.
@@ -13,6 +19,26 @@ Yapzek Local Agent is a VS Code chat extension that lets you talk to local LLMs 
 - **Structured tooling** – when the model emits a JSON "tool plan", Yapzek will create or edit files and run terminal commands automatically on your behalf.
 - **Mirrored command output** – every automated action streams into both the chat transcript and a dedicated Yapzek Agent output channel, so you can review stdout in real time.
 - **Agent mode parity** – pick "Agent" in the dropdown to mirror VS Code Chat’s agent role and aggressively prefer actionable tool plans.
+
+
+## Screenshots
+
+<p align="center">
+  <img src="./assets/VsCode-Chat-1.png">
+</p>
+
+<p align="center">
+  <img src="./assets/VsCode-Chat-2.png">
+</p>
+
+<p align="center">
+  <img src="./assets/VsCode-Chat-3.png">
+</p>
+
+<p align="center">
+  <img src="./assets/VsCode-Chat.png">
+</p>
+
 
 ## Requirements
 
