@@ -1,0 +1,161 @@
+{
+  "name": "yapzek-local-agent",
+  "displayName": "Yapzek Local Agent",
+  "description": "Standalone Yapzek chat surface for local LLMs with built-in tooling.",
+  "version": "0.1.10",
+  "publisher": "yapzek",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yapzek/local-agent"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:yapzekAgent.chatView",
+    "onView:yapzekAgent.controlView"
+  ],
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "test": "echo 'No tests yet'",
+    "package": "npx @vscode/vsce package"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "Yapzek Local Agent",
+      "properties": {
+        "yapzekAgent.provider": {
+          "type": "string",
+          "enum": [
+            "ollama",
+            "lmstudio"
+          ],
+          "default": "ollama",
+          "description": "Local model backend to use."
+        },
+        "yapzekAgent.endpoint": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Base URL for the selected backend."
+        },
+        "yapzekAgent.model": {
+          "type": "string",
+          "default": "llama3",
+          "description": "Model identifier understood by the backend."
+        },
+        "yapzekAgent.temperature": {
+          "type": "number",
+          "default": 0.2,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Sampling temperature forwarded to the backend."
+        },
+        "yapzekAgent.systemPrompt": {
+          "type": "string",
+          "default": "You are Yapzek, a precise local coding agent running inside VS Code.",
+          "description": "System prompt prepended to every chat session."
+        },
+        "yapzekAgent.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Optional API key (LM Studio or other OpenAI-compatible services)."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "yapzekAgent.openChatSidebar",
+        "title": "Yapzek Agent: Open Chat Sidebar"
+      },
+      {
+        "command": "yapzekAgent.openChatWindow",
+        "title": "Yapzek Agent: Open Chat Window"
+      },
+      {
+        "command": "yapzekAgent.explainSelection",
+        "title": "Yapzek Agent: Explain Selection"
+      },
+      {
+        "command": "yapzekAgent.refactorSelection",
+        "title": "Yapzek Agent: Refactor Selection"
+      },
+      {
+        "command": "yapzekAgent.generateTests",
+        "title": "Yapzek Agent: Generate Tests"
+      },
+      {
+        "command": "yapzekAgent.insertSnippet",
+        "title": "Yapzek Agent: Insert Snippet"
+      },
+      {
+        "command": "yapzekAgent.workspaceSearch",
+        "title": "Yapzek Agent: Workspace Search"
+      },
+      {
+        "command": "yapzekAgent.runTerminalCommand",
+        "title": "Yapzek Agent: Run Terminal Command"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "yapzek",
+          "title": "Yapzek",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "yapzek": [
+        {
+          "id": "yapzek.chat",
+          "name": "Yapzek Chat",
+          "type": "webview",
+          "icon": "media/icon.svg"
+        },
+        {
+          "id": "yapzek.control",
+          "name": "Yapzek Control",
+          "type": "webview",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "yapzekAgent.explainSelection",
+          "when": "editorHasSelection",
+          "group": "7_modification@1"
+        },
+        {
+          "command": "yapzekAgent.refactorSelection",
+          "when": "editorHasSelection",
+          "group": "7_modification@2"
+        },
+        {
+          "command": "yapzekAgent.generateTests",
+          "when": "editorHasSelection",
+          "group": "7_modification@3"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "22.x",
+    "@types/vscode": "^1.106.0",
+    "@typescript-eslint/eslint-plugin": "^8.14.0",
+    "@typescript-eslint/parser": "^8.14.0",
+    "@vscode/vsce": "^3.7.0",
+    "eslint": "^9.12.0",
+    "typescript": "^5.6.3"
+  }
+}
