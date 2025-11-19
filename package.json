@@ -2,11 +2,11 @@
   "name": "yapzek-local-agent",
   "displayName": "Yapzek Local Agent",
   "description": "Standalone Yapzek chat surface for local LLMs with built-in tooling.",
-  "version": "0.1.10",
-  "publisher": "yapzek",
+  "version": "0.1.11",
+  "publisher": "KarayAkar",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yapzek/local-agent"
+    "url": "https://github.com/karayakar/Visual-Studio-Code-Custom-Chat-Extension-LM-Studio-Ollama-"
   },
   "activationEvents": [
     "onStartupFinished",
